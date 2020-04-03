@@ -26,7 +26,6 @@ class NewsHeadlinesTableViewController: UITableViewController {
         CategoryService().getAllHeadlinesForAllCategories { [weak self] categories in
             self?.categoryListVM = CategoryListViewModel(categories: categories)
             self?.tableView.reloadData()
-            print(categories)
         }
         
     }
@@ -35,6 +34,9 @@ class NewsHeadlinesTableViewController: UITableViewController {
                 
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 600
+        
+        self.tableView.tableHeaderView = UIView.viewForTableViewHeader(subtitle: Date.dateAsStringForTableViewHeader())
+        
         
         
     }
