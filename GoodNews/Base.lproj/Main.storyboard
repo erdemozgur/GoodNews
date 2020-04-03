@@ -3,6 +3,7 @@
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -16,24 +17,24 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NewsHeadlineTableViewCell" id="fCs-2P-E01" customClass="NewsHeadlineTableViewCell" customModule="GoodNews" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="71.5"/>
+                                <rect key="frame" x="0.0" y="28" width="375" height="68"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fCs-2P-E01" id="LBd-dg-JqF">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="71.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="68"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="lUt-Jk-Ixg">
-                                            <rect key="frame" x="16" y="11" width="299" height="49.5"/>
+                                            <rect key="frame" x="16" y="11" width="299" height="46"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nnf-96-wdR">
                                                     <rect key="frame" x="0.0" y="0.0" width="299" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZAq-ek-cou">
-                                                    <rect key="frame" x="0.0" y="29" width="299" height="20.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <rect key="frame" x="0.0" y="29" width="299" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -60,6 +61,7 @@
                                     <outlet property="descriptionLabel" destination="ZAq-ek-cou" id="xGq-fd-C6y"/>
                                     <outlet property="headlineImageView" destination="zvh-J1-JLz" id="ef6-F3-NEa"/>
                                     <outlet property="titleLabel" destination="nnf-96-wdR" id="YMg-Vn-Dwv"/>
+                                    <segue destination="2fS-2s-j0U" kind="show" identifier="NewsDetailsViewController" id="u3v-dG-J2V"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -73,6 +75,41 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lFq-rk-1Vx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1184.8" y="172.26386806596702"/>
+        </scene>
+        <!--News Details View Controller-->
+        <scene sceneID="yn7-f0-beo">
+            <objects>
+                <viewController id="2fS-2s-j0U" customClass="NewsDetailsViewController" customModule="GoodNews" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cag-Zc-SHW">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mVk-Rv-znh">
+                                <rect key="frame" x="0.0" y="44" width="375" height="623"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="mVk-Rv-znh" firstAttribute="leading" secondItem="9Ft-KJ-tUa" secondAttribute="leading" id="2RA-q1-aBs"/>
+                            <constraint firstItem="9Ft-KJ-tUa" firstAttribute="bottom" secondItem="mVk-Rv-znh" secondAttribute="bottom" id="3id-io-z8N"/>
+                            <constraint firstItem="mVk-Rv-znh" firstAttribute="top" secondItem="9Ft-KJ-tUa" secondAttribute="top" id="GLA-tV-HJ4"/>
+                            <constraint firstItem="9Ft-KJ-tUa" firstAttribute="trailing" secondItem="mVk-Rv-znh" secondAttribute="trailing" id="aah-RH-hhD"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="9Ft-KJ-tUa"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Eny-Pq-f08"/>
+                    <connections>
+                        <outlet property="webview" destination="mVk-Rv-znh" id="FwU-Sv-NiO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kw2-cT-dwf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2098" y="172"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Nwi-jM-o7N">

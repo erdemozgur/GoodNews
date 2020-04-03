@@ -38,6 +38,29 @@ class NewsHeadlinesTableViewController: UITableViewController {
         self.tableView.tableHeaderView = UIView.viewForTableViewHeader(subtitle: Date.dateAsStringForTableViewHeader())
         
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "NewsDetailsViewController" {
+            preparSegueForNewsDetails(segue)
+        }
+    }
+    
+    private func preparSegueForNewsDetails(_ segue: UIStoryboardSegue) {
+        
+        guard let newsDetailsVC = segue.destination as? NewsDetailsViewController else {
+            fatalError("NewsDetailsViewController is not defined.")
+        }
+        
+        guard let indexPath = tableView.indexPathForSelectedRow else {
+            fatalError("Unable to get indexPath selected row")
+        }
+        
+        let articleVM = self.categoryListVM.categoryAtIndex(index: indexPath.section).articleAtIndex(index: indexPath.row)
+        
+        newsDetailsVC.article = articleVM.article
+        
+    }
+    
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return self.categoryListVM.heightForHeaderInSection(section)
     }

@@ -38,7 +38,7 @@ extension UIView {
         headerView.backgroundColor = UIColor.white
         let sectionHeaderLabel = UILabel(frame: headerView.frame)
         sectionHeaderLabel.text = title.uppercased()
-        sectionHeaderLabel.textColor = UIColor.black
+        sectionHeaderLabel.textColor = UIColor.oceanBlue
         sectionHeaderLabel.font = UIFont.fontForSectionHeaderTitle()
         
         headerView.addSubview(sectionHeaderLabel)
