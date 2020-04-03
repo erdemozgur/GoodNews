@@ -11,12 +11,23 @@ import UIKit
 
 class NewsHeadlinesTableViewController: UITableViewController {
     
-    let news = [["title": "This is the title", "description": "This is the descriptionn"], ["title": "This is the title", "description": "This is the descriptionn This is the descriptionn This is the descriptionn This is the descriptionn "] ]
+    private var categoryListVM: CategoryListViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupUI()
+        populateHeadlinesAndArticles()
+        
+    }
+    
+    fileprivate func populateHeadlinesAndArticles() {
+        
+        CategoryService().getAllHeadlinesForAllCategories { [weak self] categories in
+            self?.categoryListVM = CategoryListViewModel(categories: categories)
+            self?.tableView.reloadData()
+            print(categories)
+        }
         
     }
     
@@ -29,26 +40,24 @@ class NewsHeadlinesTableViewController: UITableViewController {
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        
-        return 1
-        
+        return self.categoryListVM == nil ? 0 : self.categoryListVM.numberOfSections
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.news.count
+        return self.categoryListVM.numberOfRowsInSection(section)
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "NewsHeadlineTableViewCell", for: indexPath) as? NewsHeadlineTableViewCell else {
             fatalError("NewsHeadlineTableViewCell is not found")
         }
-        cell.titleLabel.text = self.news[indexPath.row]["title"]
-        cell.descriptionLabel.text = self.news[indexPath.row]["description"]
+        let articleVM = self.categoryListVM.categoryAtIndex(index: indexPath.section).articleAtIndex(index: indexPath.row)
+        
+        cell.configure(vm: articleVM)
         
         return cell
-        
-        
-        
     }
+    
+
+    
     
 }

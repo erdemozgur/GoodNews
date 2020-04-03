@@ -12,10 +12,7 @@ extension URL {
     
     static func urlForTopHeadlines(for category: String) -> URL {
         
-        return URL(string: "http://newsapi.org/v2/top-headlines?category=\(category)&apiKey=0d9ec00bde264043a3619ecb43f46320")!
+        return URL(string: "https://newsapi.org/v2/top-headlines?category=\(category)&country=tr&apiKey=0d9ec00bde264043a3619ecb43f46320")!
         
     }
-    
-    
-    
 }
