@@ -58,6 +58,7 @@
 		B46CF92C243720DC00B7D28C /* GoodNews */ = {
 			isa = PBXGroup;
 			children = (
+				B46CF94A2437312D00B7D28C /* Images */,
 				B46CF9472437269400B7D28C /* Cells */,
 				B46CF9422437216100B7D28C /* Managers */,
 				B46CF941243720E600B7D28C /* Controllers */,
@@ -92,6 +93,13 @@
 				B46CF948243726AA00B7D28C /* NewsHeadlineTableViewCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		B46CF94A2437312D00B7D28C /* Images */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
