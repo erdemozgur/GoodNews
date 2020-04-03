@@ -19,9 +19,7 @@ class NewsHeadlinesTableViewController: UITableViewController {
     }
     
     fileprivate func setupUI() {
-        
-        self.navigationController?.navigationBar.prefersLargeTitles = true
-        
+                
         
     }
     
